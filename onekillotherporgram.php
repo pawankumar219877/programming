@@ -17,8 +17,6 @@ for ($i = 0; $i < $totalDigit; $i++) {
 }
 
 echo "<pre>";
-//print_r($a);exit;
-
 function resetIndices($arr) {
     $out = [];
     $j = 0;
@@ -61,8 +59,6 @@ function deleteNode($AerrayData, $deleteValue, $deleteIndex = '') {
 
             if (($deletedFirst == true) && ($key == (count($AerrayData) - 1))) {
                 $val["next"] = $AerrayData[1]["value"];
-
-                // echo $val["next"];exit;
             }
 
             $val["killer"] = ($killerSet == true) ? $killerSet : false;
@@ -74,20 +70,6 @@ function deleteNode($AerrayData, $deleteValue, $deleteIndex = '') {
     return $arr;
 }
 
-/**
- * 
- * @param type $inputarray
- * @return type
- */
-function killerb($inputarray) {
-    $newarr = $inputarray;
-    foreach ($inputarray as $key => $val) {
-        if ($key % 2 != 0) {
-            $newarr = deleteNode($newarr, $key);
-        }
-    }
-    return $newarr;
-}
 
 /**
  * 
