@@ -4,7 +4,30 @@
  
 100 people standing in a circle in an order 1 to 100. No. 1 has a sword. He kills the next person 
  (i.e. No. 2) and gives the sword to the next (i.e. No. 3). All people do the same until only 1 survives.
- Which number survives at the last? I want C++ program for this.*/
+ Which number survives at the last? I want C++ program for this.
+
+// 73 is answer 
+import java.util.ArrayList ;
+public class Program
+{
+    public static void main(String[] args) {
+        ArrayList<Integer>  a =new ArrayList(100) ;
+        for(int i=1;i<=100;i++)
+        a.add(i);
+        
+        for(int i=0;a.size()!=1;i++) {
+            if(a.size()<i+1)
+            i=0;
+            if(a.size()==i+1)
+            i=-1;
+           
+            a.remove(i+1);
+            }
+        System.out.print("Answer is "+a.get(0));
+    }
+}
+ * 
+  */
 
 $a = [];
 $totalDigit=100;
