@@ -3,18 +3,31 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		 <script>
-		 "use strict"
-		  const tree= {
+		<style>
+		#op{
+         width: 197px;
+         word-break: break-word;
+         white-space: pre-wrap;
+         padding: 10px;
+		}
+		</style>
+		
+		 <script defer>
+		// FIND out all the leaf node of the tree  whose  children=null 
+		 
+		// alert(JSON.stringify(tree));
+		
+		// alert(JSON.stringify(Arr));
+		window.addEventListener("load", function(){
+	
+        const tree= {
 		   children:[
 					  { 
 						data:{
 						 leaf:true,
 						 name:"c1"
-						}
-					  },
-					  
-					  { 
+						},
+					 
 						children:[
 									 { 
 												children:null,
@@ -72,47 +85,68 @@
 						 leaf:true,
 						 name:"c2"
 						}
+					  },
+					  
+					  { 
+						data:{
+						 leaf:true,
+						 name:"c13"
+						},
+					 	children:null,
 					  }
-		          ],
+					  
+					  
+		      ],
 			  data:{
 			   leaf:true,
 			   name:"01"
 			  }
 			  
 		  }
+	
+		  
+		  var childrenItemList= [];
+		 function recursive(treeInput){
+		    var  children= treeInput.children || Array.isArray(treeInput.children);
+		    if(children){
+			 children.forEach(function(val,key){
+               recursive(val);
+		     });
+			
+			}else {
+			  childrenItemList.push(treeInput);
+			}
+		   
+		  }
+		   tree.children.forEach(function(val,key){
+               recursive(val);
+		   });
+		   
+		   
+		    /* function recursive(treeParent,treeInput,i){
+		    var  children= treeInput || Array.isArray(treeInput);
+		    if(children){
+			 children.forEach(function(val,key){
+               recursive(val,val.children);
+		     });
+			
+			}else {
+			  childrenItemList.push(treeParent);
+			}
+		   
+		  }
 		 
+		  recursive(tree.children);*/
 		 
-		// alert(JSON.stringify(tree));
+	      document.getElementById("op").innerHTML = JSON.stringify(childrenItemList); 
+        });
 		
-		
-		  var Arr=[];
-		 function ret(tree,i){
-		     var tdata=tree;
-		     while(tdata.children!=null){
-			     tdata.children.forEach(function(val){
-					 if(Arr.some(node=>node.data.name==val.data.name)){
-					 }else{
-					  Arr.push(val);
-					 }
-					 
-				 })
-			    tdata=tdata.children[i];
-			 }
-		 
-		 }
-		
-		 tree.children.forEach(function(val,key){ 
-		  ret(tree,key);
-		 });
-		
-		 alert(JSON.stringify(Arr));
-		 
-		 
-		 
 		 </script>
-		
     </head>
     <body>
-        <div id="op">TODO write content</div>
+	<p id="demo" onload="myFunction()">Click me to change my HTML content (innerHTML).</p>
+        <pre><div id="op">op</div></pre>
     </body>
+	
+	
 </html>
